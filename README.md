@@ -7,7 +7,7 @@ I would suggest that if you're a beginnner you should go through the Hello AI Wo
 
 Before moving on, you should make and mount a swap file (at least 4GB). It will make your life a lot easier and is a must for this to work. More details [here](https://support.rackspace.com/how-to/create-a-linux-swap-file/).
 
-```python
+```
 sudo fallocate -l 4G /mnt/4GB.swap
 sudo mkswap /mnt/4GB.swap
 sudo swapon /mnt/4GB.swap
@@ -15,7 +15,7 @@ sudo swapon /mnt/4GB.swap
 
 For making the change permanent you will need to add this line at the end of `/etc/fstab` :
 
-```python
+```
 /mnt/4GB.swap  none  swap  sw 0  0
 ```
 
@@ -23,7 +23,7 @@ You can run `sudo tegrastats` to confirm if the swap file is mounted.
 
 Then clone my project repository with:
 
-```python
+```
 git clone https://github.com/abdullahsadiq/jetson-fruits-classification.git
 ```
 
@@ -48,7 +48,7 @@ You can find the details of using the `camera-capture` utility [here](https://gi
 
 Make a folder which will store your new dataset and create a file in the root of this folder called *labels.txt*, where you should add the names of your dataset's classes (one on each line).
 
-```python
+```
 mkdir my-fruits-dataset
 cd my-fruits-dataset
 gedit labels.txt
@@ -58,13 +58,13 @@ Remember to save the file after adding the names.
 
 Head over to `jetson-inference/build/tools/camera-capture` and run:
 
-```python
+```
 make
 ```
 
 This will make an executable file called `camera-capture` which will be located in `jetson-inference/build/aarch64/bin`. If you're still in the same directory as above run:
 
-```python
+```
 cd ../../aarch64/bin/
 ./camera-capture
 ```
@@ -95,7 +95,7 @@ When retraining a dataset, you have the choice to do it on the Jetson Nano or on
 
 Navigate to the `jetson-fruits-classification` root and open a terminal from there. Run the following while replacing the directory of the dataset you wish to train:
 
-```python
+```
 python3 retrain/retrain.py --image_dir fruits-dataset/
 ```
 
@@ -109,7 +109,7 @@ Once the retraining is complete move and save the two output files from the *tmp
 
 You will need some images of fruits to test the model. I have included some from Google Images in the *test-images* folder of the repository. You can either use the model which you trained earlier or the one which I have already trained and is present in the repository in the *model* folder. Assuming you are still in the root of the `jetson-fruits-classification`, just copy the model you want to test to the *retrain* folder and run:
 
-```python
+```
 python3 retrain/label_image.py --graph=retrain/my_output_graph.pb --labels=retrain/my_output_labels.txt --input_layer=Placeholder --output_layer=final_result --image=test-images/apple.jpeg
 ```
 
