@@ -1,0 +1,6 @@
+apple
+beetroot
+dates
+mango
+orange
+pomegranate
