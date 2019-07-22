@@ -110,7 +110,7 @@ Once the retraining is complete move and save the two output files from the *tmp
 You will need some images of fruits to test the model. I have included some from Google Images in the *test-images* folder of the repository. You can either use the model which you trained earlier or the one which I have already trained and is present in the repository in the *model* folder. Assuming you are still in the root of the `jetson-fruits-classification`, just copy the model you want to test to the *retrain* folder and run:
 
 ```
-python3 retrain/label_image.py --graph=retrain/my_output_graph.pb --labels=retrain/my_output_labels.txt --input_layer=Placeholder --output_layer=final_result --image=test-images/apple.jpeg
+python3 retrain/label_image.py --graph=retrain/output_graph.pb --labels=retrain/output_labels.txt --input_layer=Placeholder --output_layer=final_result --image=test-images/apple.jpeg
 ```
 
 If you want to use another model located anywhere else just make sure to give it's proper location.
